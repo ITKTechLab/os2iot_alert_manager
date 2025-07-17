@@ -8,6 +8,9 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+- Update all packages within minor versions
+- Added an extra check for an empty application mail address (made checks fail)
+
 ## [1.0.5] - 2024-11-28
 
 - Fixed logic error in isGatewaySilenced.
@@ -24,7 +27,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 - Added application name to subject.
 - Wrapped application name in device info with link to the application.
-- Added from name to mail address.
+- Added from name to mailge  address.
 - Added device EUI to device model.
 - Added 'References' header with EUI to mails.
 

@@ -337,6 +337,7 @@ final readonly class AlertManager
         }
 
         $addresses = empty($device->metadata[$this->deviceMetadataFieldMail]) ? ($application->contactEmail ?? $this->deviceFallbackMail) : $device->metadata[$this->deviceMetadataFieldMail];
+        $addresses = empty($addresses) ? $this->deviceFallbackMail : $addresses;
         $addresses = explode(',', $addresses);
         $addresses = array_map('trim', $addresses);
 

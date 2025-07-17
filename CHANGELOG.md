@@ -8,6 +8,8 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+## [1.0.6] - 2025-07-17
+
 - Update all packages within minor versions
 - Added an extra check for an empty application mail address (made checks fail)
 
@@ -68,6 +70,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 [keep a changelog]: https://keepachangelog.com/en/1.1.0/
 [Unreleased]: https://github.com/itk-dev/iot_alert_manager/compare/main...develop
+[1.0.6]: https://github.com/itk-dev/iot_alert_manager/compare/1.0.6...1.0.5
 [1.0.5]: https://github.com/itk-dev/iot_alert_manager/compare/1.0.5...1.0.4
 [1.0.4]: https://github.com/itk-dev/iot_alert_manager/compare/1.0.4...1.0.3
 [1.0.3]: https://github.com/itk-dev/iot_alert_manager/compare/1.0.3...1.0.2

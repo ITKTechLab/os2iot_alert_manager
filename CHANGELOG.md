@@ -8,6 +8,8 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+## [1.0.6] - 2025-07-17
+
 - Update all packages within minor versions
 - Added an extra check for an empty application mail address (made checks fail)
 

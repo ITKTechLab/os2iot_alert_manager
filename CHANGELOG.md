@@ -8,6 +8,17 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+- Security: upgraded Symfony from end-of-life 7.1 to 7.4 to pick up security
+  fixes (cache, http-foundation, mime, mailer, routing, runtime, yaml,
+  polyfill-intl-idn, http-client). The 7.1 branch no longer receives patches.
+- Security: updated `twig/twig` to 3.27 (fixes critical CVE-2026-46633 code
+  injection via `{% use %}` and several sandbox bypasses).
+- Security: updated `nesbot/carbon` to 3.11 (fixes CVE-2025-22145).
+- Bumped PHP requirement to 8.4 and the Docker images to `itkdev/php8.4-fpm`.
+- Fixed the broken `phpunit/phpunit` (`^3.7`) and `symfony/phpunit-bridge`
+  (`^3.2`) constraints; bumped Psalm to 6 for PHP 8.4 support and regenerated
+  the Psalm baseline.
+
 ## [1.0.6] - 2025-07-17
 
 - Update all packages within minor versions

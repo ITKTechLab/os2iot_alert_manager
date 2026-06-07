@@ -79,6 +79,9 @@
         ],
         "psalm": [
             "./vendor/bin/psalm --no-cache"
+        ],
+        "test": [
+            "vendor/bin/phpunit"
         ]
     },
     "conflict": {

@@ -18,6 +18,14 @@ See [keep a changelog] for information about writing changes to this log.
 - Fixed the broken `phpunit/phpunit` (`^3.7`) and `symfony/phpunit-bridge`
   (`^3.2`) constraints; bumped Psalm to 6 for PHP 8.4 support and regenerated
   the Psalm baseline.
+- Added a unit-test suite for `ApiParser` and `AlertManager` covering JSON
+  parsing, status filtering, date/timezone conversion, offline-threshold checks,
+  silencing, contact-info fallback order and the mail/SMS dispatch flags. Run
+  with `composer test`.
+- Introduced `ApiClientInterface` and `MailServiceInterface` and switched
+  `AlertManager` to depend on those interfaces (and the existing
+  `SmsClientInterface`) so its collaborators can be mocked. No behaviour change.
+- Migrated `phpunit.xml.dist` to the PHPUnit 11 schema.
 
 ## [1.0.6] - 2025-07-17
 

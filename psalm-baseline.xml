@@ -62,6 +62,15 @@
       <code><![CDATA[$this->silencedTimezone]]></code>
     </ArgumentTypeCoercion>
   </file>
+  <file src="src/Service/ApiClient.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getApplication(int $id): Application]]></code>
+      <code><![CDATA[public function getApplications(bool $filterOnStatus): array]]></code>
+      <code><![CDATA[public function getDevice(int $id): Device]]></code>
+      <code><![CDATA[public function getGateway(string $id): Gateway]]></code>
+      <code><![CDATA[public function getGateways(bool $filterOnStatus): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
   <file src="src/Service/ApiParser.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->fromTimeZone]]></code>
@@ -71,6 +80,11 @@
       <code><![CDATA[json_encode($app, JSON_UNESCAPED_UNICODE)]]></code>
       <code><![CDATA[json_encode(['gateway' => $gateway], JSON_UNESCAPED_UNICODE)]]></code>
     </PossiblyFalseArgument>
+  </file>
+  <file src="src/Service/MailService.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function sendEmail(string $to, array $context, string $refId, string $subject = 'Test mail from alert manager', string $htmlTemplate = 'test.html.twig', string $textTemplate = 'test.txt.twig'): void]]></code>
+    </MissingOverrideAttribute>
   </file>
   <file src="src/Service/SmsClient.php">
     <MissingOverrideAttribute>

@@ -23,9 +23,9 @@ use Twig\Error\SyntaxError;
 final readonly class AlertManager
 {
     public function __construct(
-        private ApiClient $apiClient,
-        private SmsClient $smsClient,
-        private MailService $mailService,
+        private ApiClientInterface $apiClient,
+        private SmsClientInterface $smsClient,
+        private MailServiceInterface $mailService,
         private MetricsService $metricsService,
         private TemplateService $templateService,
         private LoggerInterface $logger,

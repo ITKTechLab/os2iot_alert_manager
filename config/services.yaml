@@ -20,6 +20,12 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    # Bind service interfaces to their implementations so they can be autowired
+    # (and swapped/mocked). AlertManager depends on these interfaces.
+    App\Service\ApiClientInterface: '@App\Service\ApiClient'
+    App\Service\MailServiceInterface: '@App\Service\MailService'
+    App\Service\SmsClientInterface: '@App\Service\SmsClient'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
     App\Service\ApiClient:

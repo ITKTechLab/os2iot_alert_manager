@@ -8,6 +8,8 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-06-08
+
 - Fixed: an unparseable `silenced_until` value on a gateway or device no longer
   silences it. The parse error is still logged and counted, but the gateway or
   device is now treated as not silenced so its offline alert fires. Previously a
@@ -94,6 +96,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 [keep a changelog]: https://keepachangelog.com/en/1.1.0/
 [Unreleased]: https://github.com/itk-dev/iot_alert_manager/compare/main...develop
+[1.1.0]: https://github.com/itk-dev/iot_alert_manager/compare/1.1.0...1.0.6
 [1.0.6]: https://github.com/itk-dev/iot_alert_manager/compare/1.0.6...1.0.5
 [1.0.5]: https://github.com/itk-dev/iot_alert_manager/compare/1.0.5...1.0.4
 [1.0.4]: https://github.com/itk-dev/iot_alert_manager/compare/1.0.4...1.0.3

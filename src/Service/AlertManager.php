@@ -511,8 +511,9 @@ final readonly class AlertManager
                 labels: ['type' => 'exception']
             );
 
-            // Default to false. Better an extra alert rather than none.
-            return false;
+            // Treat an unparseable date as expired so the gateway/device is not
+            // silenced and the alert still fires — better an extra alert than none.
+            return true;
         }
 
         return time() >= $date->getTimestamp();

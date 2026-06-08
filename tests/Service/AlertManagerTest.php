@@ -409,11 +409,10 @@ final class AlertManagerTest extends TestCase
     }
 
     #[Test]
-    public function gatewayUnparseableSilenceDateIsTreatedAsSilencedAndLogged(): void
+    public function gatewayUnparseableSilenceDateStillAlertsAndLogs(): void
     {
-        // NOTE: pins current behaviour. isPastDate() returns false on a parse failure,
-        // and isGatewaySilenced() negates it, so an unparseable date SILENCES the gateway
-        // (no alert) — the opposite of the "better an extra alert" comment in AlertManager.
+        // An unparseable silenced_until fails open: the parse error is logged and
+        // counted, but the gateway is treated as not silenced so the alert still fires.
         $now = new \DateTimeImmutable('2024-06-01 12:00:00');
         $gateway = $this->gateway([
             'responsibleEmail' => 'r@gw.test',
@@ -428,9 +427,37 @@ final class AlertManagerTest extends TestCase
             }
         );
         $this->logger->expects(self::once())->method('error');
-        $this->mail->expects(self::never())->method('sendEmail');
+        $this->mail->expects(self::once())->method('sendEmail');
 
         $this->makeManager()->checkGateways($now, filterOnStatus: false, noSms: true);
+
+        self::assertContains('alert_silenced_parse_date_error_total', $counters);
+    }
+
+    #[Test]
+    public function deviceUnparseableSilenceDateStillAlertsAndLogs(): void
+    {
+        // Same fail-open behaviour on the device silencing path (isDeviceSilenced).
+        $now = new \DateTimeImmutable('2024-06-01 12:00:00');
+        $device = $this->device([
+            'metadata' => [
+                'email' => 'd@dev.test',
+                'notification_threshold' => 60,
+                'silenced_until' => 'not-a-valid-date',
+            ],
+            'latestReceivedMessage' => $this->message($now->modify('-5 minutes')),
+        ]);
+        $this->apiClient->method('getDevice')->willReturn($device);
+        $counters = [];
+        $this->metrics->method('counter')->willReturnCallback(
+            function (string $name) use (&$counters): void {
+                $counters[] = $name;
+            }
+        );
+        $this->logger->expects(self::once())->method('error');
+        $this->mail->expects(self::once())->method('sendEmail');
+
+        $this->makeManager()->checkDevice($now, 1, noSms: true);
 
         self::assertContains('alert_silenced_parse_date_error_total', $counters);
     }

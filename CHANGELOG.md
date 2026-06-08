@@ -8,6 +8,11 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+- Fixed: an unparseable `silenced_until` value on a gateway or device no longer
+  silences it. The parse error is still logged and counted, but the gateway or
+  device is now treated as not silenced so its offline alert fires. Previously a
+  mistyped or wrong-format silence date silently suppressed all alerts for that
+  gateway/device.
 - Security: upgraded Symfony from end-of-life 7.1 to 7.4 to pick up security
   fixes (cache, http-foundation, mime, mailer, routing, runtime, yaml,
   polyfill-intl-idn, http-client). The 7.1 branch no longer receives patches.

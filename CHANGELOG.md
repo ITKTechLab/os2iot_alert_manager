@@ -8,6 +8,30 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+- Fixed: an unparseable `silenced_until` value on a gateway or device no longer
+  silences it. The parse error is still logged and counted, but the gateway or
+  device is now treated as not silenced so its offline alert fires. Previously a
+  mistyped or wrong-format silence date silently suppressed all alerts for that
+  gateway/device.
+- Security: upgraded Symfony from end-of-life 7.1 to 7.4 to pick up security
+  fixes (cache, http-foundation, mime, mailer, routing, runtime, yaml,
+  polyfill-intl-idn, http-client). The 7.1 branch no longer receives patches.
+- Security: updated `twig/twig` to 3.27 (fixes critical CVE-2026-46633 code
+  injection via `{% use %}` and several sandbox bypasses).
+- Security: updated `nesbot/carbon` to 3.11 (fixes CVE-2025-22145).
+- Bumped PHP requirement to 8.4 and the Docker images to `itkdev/php8.4-fpm`.
+- Fixed the broken `phpunit/phpunit` (`^3.7`) and `symfony/phpunit-bridge`
+  (`^3.2`) constraints; bumped Psalm to 6 for PHP 8.4 support and regenerated
+  the Psalm baseline.
+- Added a unit-test suite for `ApiParser` and `AlertManager` covering JSON
+  parsing, status filtering, date/timezone conversion, offline-threshold checks,
+  silencing, contact-info fallback order and the mail/SMS dispatch flags. Run
+  with `composer test`.
+- Introduced `ApiClientInterface` and `MailServiceInterface` and switched
+  `AlertManager` to depend on those interfaces (and the existing
+  `SmsClientInterface`) so its collaborators can be mocked. No behaviour change.
+- Migrated `phpunit.xml.dist` to the PHPUnit 11 schema.
+
 ## [1.0.6] - 2025-07-17
 
 - Update all packages within minor versions

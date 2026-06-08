@@ -15,7 +15,7 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-final readonly class ApiClient
+final readonly class ApiClient implements ApiClientInterface
 {
     public function __construct(
         private HttpClientInterface $iotApiClient,

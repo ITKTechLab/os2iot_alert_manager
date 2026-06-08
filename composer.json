@@ -6,31 +6,31 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "cerbero/json-parser": "^1.1",
         "giggsey/libphonenumber-for-php": "^8.13",
         "itk-dev/metrics-bundle": "^1.1",
         "nesbot/carbon": "^3.8",
-        "symfony/console": "7.1.*",
-        "symfony/dotenv": "7.1.*",
+        "symfony/console": "7.4.*",
+        "symfony/dotenv": "7.4.*",
         "symfony/flex": "^2",
-        "symfony/framework-bundle": "7.1.*",
-        "symfony/http-client": "7.1.*",
-        "symfony/mailer": "7.1.*",
-        "symfony/runtime": "7.1.*",
-        "symfony/twig-bundle": "7.1.*",
-        "symfony/yaml": "7.1.*"
+        "symfony/framework-bundle": "7.4.*",
+        "symfony/http-client": "7.4.*",
+        "symfony/mailer": "7.4.*",
+        "symfony/runtime": "7.4.*",
+        "symfony/twig-bundle": "7.4.*",
+        "symfony/yaml": "7.4.*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.64",
-        "phpunit/phpunit": "^3.7",
-        "psalm/plugin-symfony": "^5.2",
+        "phpunit/phpunit": "^11.5",
+        "psalm/plugin-symfony": "^5.3",
         "symfony/maker-bundle": "^1.61",
-        "symfony/phpunit-bridge": "^3.2",
-        "vimeo/psalm": "^5.25",
-        "weirdan/doctrine-psalm-plugin": "^2.9"
+        "symfony/phpunit-bridge": "7.4.*",
+        "vimeo/psalm": "^6.0",
+        "weirdan/doctrine-psalm-plugin": "^2.10"
     },
     "config": {
         "allow-plugins": {
@@ -79,6 +79,9 @@
         ],
         "psalm": [
             "./vendor/bin/psalm --no-cache"
+        ],
+        "test": [
+            "vendor/bin/phpunit"
         ]
     },
     "conflict": {
@@ -87,7 +90,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "7.1.*"
+            "require": "7.4.*"
         }
     }
 }

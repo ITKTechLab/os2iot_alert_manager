@@ -10,7 +10,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 
-final readonly class MailService
+final readonly class MailService implements MailServiceInterface
 {
     public function __construct(
         private MailerInterface $mailer,

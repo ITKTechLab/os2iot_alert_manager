@@ -23,9 +23,9 @@ use Twig\Error\SyntaxError;
 final readonly class AlertManager
 {
     public function __construct(
-        private ApiClient $apiClient,
-        private SmsClient $smsClient,
-        private MailService $mailService,
+        private ApiClientInterface $apiClient,
+        private SmsClientInterface $smsClient,
+        private MailServiceInterface $mailService,
         private MetricsService $metricsService,
         private TemplateService $templateService,
         private LoggerInterface $logger,
@@ -511,8 +511,9 @@ final readonly class AlertManager
                 labels: ['type' => 'exception']
             );
 
-            // Default to false. Better an extra alert rather than none.
-            return false;
+            // Treat an unparseable date as expired so the gateway/device is not
+            // silenced and the alert still fires — better an extra alert than none.
+            return true;
         }
 
         return time() >= $date->getTimestamp();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.26.0@4787eaf414e16c661902b94dfe5d882223e5b513">
+<files psalm-version="6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">
   <file src="src/Command/AlertChecksCommand.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->timezone]]></code>
@@ -7,16 +7,88 @@
     <FalsableReturnStatement>
       <code><![CDATA[\DateTimeImmutable::createFromFormat($this->dateFormat, $date, $timezone)]]></code>
     </FalsableReturnStatement>
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Command/ApiApplicationCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyFalseArgument>
+      <code><![CDATA[json_encode($app, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)]]></code>
+    </PossiblyFalseArgument>
+  </file>
+  <file src="src/Command/ApiApplicationsCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Command/ApiDeviceCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyFalseArgument>
+      <code><![CDATA[json_encode($device, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)]]></code>
+    </PossiblyFalseArgument>
+  </file>
+  <file src="src/Command/ApiGatewaysCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyFalseArgument>
+      <code><![CDATA[json_encode($gateway, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)]]></code>
+    </PossiblyFalseArgument>
+  </file>
+  <file src="src/Command/MailTestCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Command/SmsCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
   </file>
   <file src="src/Service/AlertManager.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->silencedTimezone]]></code>
     </ArgumentTypeCoercion>
   </file>
+  <file src="src/Service/ApiClient.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getApplication(int $id): Application]]></code>
+      <code><![CDATA[public function getApplications(bool $filterOnStatus): array]]></code>
+      <code><![CDATA[public function getDevice(int $id): Device]]></code>
+      <code><![CDATA[public function getGateway(string $id): Gateway]]></code>
+      <code><![CDATA[public function getGateways(bool $filterOnStatus): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
   <file src="src/Service/ApiParser.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->fromTimeZone]]></code>
       <code><![CDATA[$this->timezone]]></code>
     </ArgumentTypeCoercion>
+    <PossiblyFalseArgument>
+      <code><![CDATA[json_encode($app, JSON_UNESCAPED_UNICODE)]]></code>
+      <code><![CDATA[json_encode(['gateway' => $gateway], JSON_UNESCAPED_UNICODE)]]></code>
+    </PossiblyFalseArgument>
+  </file>
+  <file src="src/Service/MailService.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function sendEmail(string $to, array $context, string $refId, string $subject = 'Test mail from alert manager', string $htmlTemplate = 'test.html.twig', string $textTemplate = 'test.txt.twig'): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Service/SmsClient.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function send(array $to, string $message, bool $flash = false): int]]></code>
+    </MissingOverrideAttribute>
   </file>
 </files>
